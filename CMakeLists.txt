@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 4.0)
+cmake_minimum_required(VERSION 3.31.6)
 project(Factory C)
 
 set(CMAKE_C_STANDARD 17)
@@ -14,3 +14,4 @@ add_executable(Factory main.c
 )
 
 target_link_libraries(Factory raylib)
+

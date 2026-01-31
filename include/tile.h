@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include "math/vec2.h"
 
-#define TILE_SIZE 16
+#define TILE_SIZE 32
 #define CHUNK_SIZE 16
 #define CHUNK_WORLD_SIZE (TILE_SIZE * CHUNK_SIZE)
 

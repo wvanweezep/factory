@@ -6,8 +6,8 @@ vec2i tile_from_world(vec2f world_pos) {
     vec2i v;
     v.x = (int) floorf(world_pos.x / TILE_SIZE) % CHUNK_SIZE;
     v.y = (int) floorf(world_pos.y / TILE_SIZE) % CHUNK_SIZE;
-    v.x = v.x >= 0 ? v.x : 16 + v.x;
-    v.y = v.y >= 0 ? v.y : 16 + v.y;
+    v.x = v.x >= 0 ? v.x : CHUNK_SIZE + v.x;
+    v.y = v.y >= 0 ? v.y : CHUNK_SIZE + v.y;
     return v;
 }
 
