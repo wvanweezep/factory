@@ -1,4 +1,5 @@
 #include "chunk.h"
+#include <math.h>
 
 vec2i chunk_from_world(vec2f world_pos) {
     return (vec2i) {(int) floorf(world_pos.x / CHUNK_WORLD_SIZE),

@@ -1,14 +1,17 @@
 #pragma once
 
-#include <math.h>
 #include "tile.h"
+#include "collections/hashmap.h"
 #include "math/vec2.h"
-
 
 typedef struct Chunk {
     vec2i position;
     TileID tiles[CHUNK_SIZE][CHUNK_SIZE];
 } Chunk;
+
+typedef struct ChunkMap {
+    HashMap* map;
+} ChunkMap;
 
 /**
  * Convert global position to chunk index.

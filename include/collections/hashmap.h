@@ -28,7 +28,7 @@ typedef struct HashMap {
     float max_load;             // Max load before the entry array grows
 } HashMap;
 
-extern HashFunc std_hash_func;
+extern const HashFunc std_hash_func;
 
 /**
  * Creates a new empty HashMap of an initial size.
