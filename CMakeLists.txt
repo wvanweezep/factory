@@ -11,6 +11,7 @@ add_executable(Factory main.c
         src/camera.c
         src/tile.c
         src/chunk.c
+        src/collections/hashmap.c
 )
 
 target_link_libraries(Factory raylib)

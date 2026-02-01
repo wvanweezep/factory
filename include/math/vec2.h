@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdint.h>
 #include <stdio.h>
 
 typedef struct vec2i {
@@ -37,6 +38,10 @@ static inline const char* vec2f_str(vec2f v) {
     static char buf[32];
     snprintf(buf, sizeof buf, "(%.0f, %.0f)", v.x, v.y);
     return buf;
+}
+
+static inline uint64_t vec2i_hash(vec2i v) {
+    return ((uint64_t)(uint32_t)v.x << 32) | (uint64_t)(uint32_t)v.y;
 }
 
 
