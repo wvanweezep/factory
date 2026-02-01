@@ -34,7 +34,8 @@ vec2f chunk_to_world(vec2i chunk_index);
  */
 vec2f chunk_align_world(vec2f world_pos);
 
+Chunk* chunk_at(const ChunkMap* chunk_map, vec2f world_pos);
 
+Chunk* chunk_force_get(ChunkMap* chunk_map, vec2f world_pos);
 
-
-
+void chunk_set_tile(ChunkMap* chunk_map, vec2f world_pos, TileID tile_id);
