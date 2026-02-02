@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stddef.h>
 #include <stdint.h>
 
 typedef void (*DequeDestructor)(void* value);
@@ -16,7 +17,9 @@ typedef struct Deque {
 
 Deque* deque_create(size_t element_size, size_t initial_size);
 
-void deque_peek(const Deque* dq, void* out);
+const void* deque_get_first(const Deque* dq);
+
+const void* deque_get_last(const Deque* dq);
 
 void deque_add_first(Deque* dq, const void* value);
 

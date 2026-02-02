@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdbool.h>
+#include <stddef.h>
 #include <stdint.h>
 
 typedef void (*HashMapDestructor)(uint64_t key, uint64_t value);

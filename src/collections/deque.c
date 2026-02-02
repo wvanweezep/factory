@@ -14,9 +14,14 @@ Deque* deque_create(size_t element_size, size_t initial_size) {
     return dq;
 }
 
-void deque_peek(const Deque* dq, void* out) {
-    if (!dq || dq->count == 0) return;
-    memcpy(out, &dq->entries[dq->head], dq->element_size);
+const void* deque_get_first(const Deque* dq) {
+    if (!dq || dq->count == 0) return NULL;
+    return &dq->entries[dq->head];
+}
+
+const void* deque_get_last(const Deque* dq) {
+    if (!dq || dq->count == 0) return NULL;
+    return &dq->entries[dq->tail];
 }
 
 static void resize(Deque* dq) {}

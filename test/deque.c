@@ -4,6 +4,7 @@
 #define UNITT_MAIN_ENTRY
 #include "unitt/unitt.h"
 
+#include "unitt/assert.h"
 #include "collections/deque.h"
 
 UNITT_INIT
@@ -20,41 +21,47 @@ UNITT_AFTER_EACH {
     deque_free(ctx->dq, NULL);
 }
 
-UNITT(deque_peek_single) {
+UNITT(throwing) {
+    assert_throws({
+        throw(OutOfRangeException, "hh");
+    }, OutOfRangeException);
+}
+
+UNITT(peek_single) {
     Deque* dq = ctx->dq;
     const int value = 42;
     deque_add_first(dq, &value);
-    int result;
-    deque_peek(dq, &result);
+    const int result = *(int*)deque_get_first(dq);
     assert_equals(result, 42);
 }
 
-UNITT(deque_peek_empty) {
-    Deque* dq = ctx->dq;
-    int result = 42;
-    deque_peek(dq, &result);
-    assert_equals(result, 42);
-}
-
-UNITT(deque_add_first_order) {
+UNITT(add_first_order) {
     Deque* dq = ctx->dq;
     int value = 42;
     deque_add_first(dq, &value);
     value = 43;
     deque_add_first(dq, &value);
-    int result;
-    deque_peek(dq, &result);
+    const int result = *(int*)deque_get_first(dq);
     assert_equals(result, 43);
 }
 
-UNITT(deque_add_last_order) {
+UNITT(add_last_order) {
     Deque* dq = ctx->dq;
     int value = 42;
     deque_add_last(dq, &value);
     value = 43;
     deque_add_last(dq, &value);
-    int result;
-    deque_peek(dq, &result);
+    const int result = *(int*)deque_get_first(dq);
+    assert_equals(result, 42);
+}
+
+UNITT(add_combination) {
+    Deque* dq = ctx->dq;
+    int value = 42;
+    deque_add_first(dq, &value);
+    value = 43;
+    deque_add_last(dq, &value);
+    const int result = *(int*)deque_get_first(dq);
     assert_equals(result, 42);
 }
 

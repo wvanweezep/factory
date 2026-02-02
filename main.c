@@ -3,8 +3,8 @@
 #include "camera.h"
 
 #define CAM_SPEED (((float) TILE_SIZE) * 0.3f)
-#define SCREEN_WIDTH 2000
-#define SCREEN_HEIGHT 1500
+#define SCREEN_WIDTH 1000
+#define SCREEN_HEIGHT 800
 
 static int tile_selected = 0;
 
