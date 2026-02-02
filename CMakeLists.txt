@@ -7,12 +7,11 @@ find_package(raylib CONFIG REQUIRED)
 
 include_directories(PRIVATE include/)
 
-add_executable(Factory main.c
-        src/camera.c
-        src/tile.c
-        src/chunk.c
-        src/collections/hashmap.c
-)
+file(GLOB_RECURSE MAIN_SOURCES src/*.c)
+add_executable(Factory main.c ${MAIN_SOURCES})
+
+file(GLOB_RECURSE TEST_SOURCES test/*.c)
+add_executable(UnitTest ${TEST_SOURCES} ${MAIN_SOURCES})
 
 target_link_libraries(Factory raylib)
 

@@ -3,7 +3,7 @@
 #include <stdint.h>
 #include "math/vec2.h"
 
-#define TILE_SIZE 32
+#define TILE_SIZE 64
 #define CHUNK_SIZE 16
 #define CHUNK_WORLD_SIZE (TILE_SIZE * CHUNK_SIZE)
 
@@ -11,26 +11,36 @@ typedef uint8_t TileID;
 
 typedef enum TileType {
     TILE_EMPTY = 0,
-    TILE_FILLED = 1
+    TILE_CONVEYER_EAST = 1,
+    TILE_CONVEYER_NORTH = 2,
+    TILE_CONVEYER_WEST = 3,
+    TILE_CONVEYER_SOUTH = 4,
+    TILE_FILLED = 5
 } TileType;
 
-/**
- * Convert a TileType to its corresponding TileID.
- * @param tile_type tile type to convert
- * @return corresponding TileID
- */
-static inline TileID tile_id_from_type(TileType tile_type) {
-    return (TileID) tile_type;
-}
+typedef enum TileDirectionIO {
+    DIR_INPUT_NORTH = 1,
+    DIR_INPUT_EAST = 2,
+    DIR_INPUT_SOUTH = 4,
+    DIR_INPUT_WEST = 8,
+    DIR_OUTPUT_NORTH = 16,
+    DIR_OUTPUT_EAST = 32,
+    DIR_OUTPUT_SOUTH = 64,
+    DIR_OUTPUT_WEST = 128
+} Direction;
 
-/**
- * Convert a TileID to its corresponding TileType.
- * @param tile_id tile id to convert
- * @return corresponding TileType
- */
-static inline TileType tile_type_from_id(TileID tile_id) {
-    return (TileType) tile_id;
-}
+typedef struct TileData {
+    uint8_t io_dir;
+} TileData;
+
+static TileData tile_data[256] = {
+    {0},
+    {DIR_INPUT_WEST | DIR_OUTPUT_EAST},
+    {DIR_INPUT_SOUTH | DIR_OUTPUT_NORTH},
+    {DIR_INPUT_EAST | DIR_INPUT_WEST},
+    {DIR_INPUT_NORTH | DIR_OUTPUT_SOUTH},
+    {0}
+};
 
 /**
  * Convert global position to local tile index.

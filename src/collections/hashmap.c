@@ -133,5 +133,7 @@ void hashmap_clear(HashMap* hm, HashMapDestructor destructor) {
 
 void hashmap_free(HashMap* hm, HashMapDestructor destructor) {
     hashmap_clear(hm, destructor);
+    free(hm->entries);
+    free(hm->states);
     free(hm);
 }
