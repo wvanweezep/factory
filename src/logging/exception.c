@@ -16,6 +16,7 @@ static const ExceptionTypeInfo exception_type_names[] = {
     {OutOfRangeException, "OutOfRangeException"},
     {NullPointerException, "NullPointerException"},
     {OutOfMemoryException, "OutOfMemoryException"},
+    {IllegalArgumentException, "IllegalArgumentException"}
 };
 
 const char* exception_to_string(ExceptionType type) {
