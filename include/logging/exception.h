@@ -5,10 +5,6 @@
 #include <stdbool.h>
 #include <setjmp.h>
 
-// TODO: Change exception stack to use Exception pointers
-// TODO: Change Deque to dedicated Stack collection
-// TODO: Change env to env_stack to allow for try-catch nesting
-
 /// Enum indicating the event for which an Exception is thrown
 typedef enum ExceptionType {
     RuntimeException = 1,               // Thrown for an unspecified runtime error

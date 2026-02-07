@@ -11,11 +11,19 @@ typedef uint8_t TileID;
 
 typedef enum TileType {
     TILE_EMPTY = 0,
-    TILE_CONVEYER_EAST = 1,
-    TILE_CONVEYER_NORTH = 2,
-    TILE_CONVEYER_WEST = 3,
-    TILE_CONVEYER_SOUTH = 4,
-    TILE_FILLED = 5
+    TILE_CONVEYER_WE = 1,
+    TILE_CONVEYER_WN = 2,
+    TILE_CONVEYER_WS = 3,
+    TILE_CONVEYER_EW = 4,
+    TILE_CONVEYER_EN = 5,
+    TILE_CONVEYER_ES = 6,
+    TILE_CONVEYER_NS = 7,
+    TILE_CONVEYER_NW = 8,
+    TILE_CONVEYER_NE = 9,
+    TILE_CONVEYER_SN = 10,
+    TILE_CONVEYER_SW = 11,
+    TILE_CONVEYER_SE = 12,
+    TILE_FILLED = 13
 } TileType;
 
 typedef enum TileDirectionIO {
@@ -34,12 +42,20 @@ typedef struct TileData {
 } TileData;
 
 static TileData tile_data[256] = {
-    {0},
-    {DIR_INPUT_WEST | DIR_OUTPUT_EAST},
-    {DIR_INPUT_SOUTH | DIR_OUTPUT_NORTH},
-    {DIR_INPUT_EAST | DIR_INPUT_WEST},
-    {DIR_INPUT_NORTH | DIR_OUTPUT_SOUTH},
-    {0}
+    {0},                                        // 0    TILE_EMPTY
+    {DIR_INPUT_WEST | DIR_OUTPUT_EAST},         // 1    TILE_CONVEYER_WE
+    {DIR_INPUT_WEST | DIR_OUTPUT_NORTH},        // 2    TILE_CONVEYER_WN
+    {DIR_INPUT_WEST | DIR_OUTPUT_SOUTH},        // 3    TILE_CONVEYER_WS
+    {DIR_INPUT_EAST | DIR_OUTPUT_WEST},         // 4    TILE_CONVEYER_EW
+    {DIR_INPUT_EAST | DIR_OUTPUT_NORTH},        // 5    TILE_CONVEYER_EN
+    {DIR_INPUT_EAST | DIR_OUTPUT_SOUTH},        // 6    TILE_CONVEYER_ES
+    {DIR_INPUT_NORTH | DIR_OUTPUT_SOUTH},       // 7    TILE_CONVEYER_NS
+    {DIR_INPUT_NORTH | DIR_OUTPUT_WEST},        // 8    TILE_CONVEYER_NW
+    {DIR_INPUT_NORTH | DIR_OUTPUT_EAST},        // 9    TILE_CONVEYER_NE
+    {DIR_INPUT_SOUTH | DIR_OUTPUT_NORTH},       // 10   TILE_CONVEYER_SN
+    {DIR_INPUT_SOUTH | DIR_OUTPUT_WEST},        // 11   TILE_CONVEYER_SW
+    {DIR_INPUT_SOUTH | DIR_OUTPUT_EAST},        // 12   TILE_CONVEYER_SE
+    {0}                                         // 13   TILE_FILLED
 };
 
 /**

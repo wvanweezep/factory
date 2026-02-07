@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include "core/factory.h"
 
 #define CONVEYER_MAX_LENGTH 256
 
@@ -12,16 +13,6 @@ typedef enum ResourceType {
     RESOURCE_EMPTY = 0,
     RESOURCE_FILLED = 1
 } ResourceType;
-
-typedef enum FactoryCompType {
-    FACTORY_COMP_CONVEYER = 0
-} FactoryCompType;
-
-typedef struct FactoryComp {
-    FactoryCompType type;
-    void* state;
-} FactoryComp;
-
 
 // dh --- dt sh --- st
 typedef struct ConveyerLine {

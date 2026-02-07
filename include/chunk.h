@@ -7,7 +7,6 @@
 typedef struct Chunk {
     vec2i position;
     TileID tiles[CHUNK_SIZE][CHUNK_SIZE];
-    uint8_t resources[CHUNK_SIZE][CHUNK_SIZE];
 } Chunk;
 
 typedef struct ChunkMap {
