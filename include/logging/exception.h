@@ -2,9 +2,8 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include <setjmp.h>
-
-#include "collections/deque.h"
 
 // TODO: Change exception stack to use Exception pointers
 // TODO: Change Deque to dedicated Stack collection
@@ -30,12 +29,11 @@ typedef struct Exception {
 
 /// Data structure for tracking the Exception stack and current environment
 typedef struct ExceptionContext {
-    Deque* stack;                       // Exception stack storing thrown exceptions
+    bool thrown_exception;              // Boolean tracking if an Exception has been thrown in the current context
+    Exception exception;                // Exception stack storing thrown exceptions
     jmp_buf env;                        // Current environment (for restoration)
+    struct ExceptionContext* prev;      // Pointer to the previous context to return to
 } ExceptionContext;
-
-/// Globally accessible ExceptionContext used for all related operations
-extern ExceptionContext exception_context;
 
 /**
  * Converts an ExceptionType into a string form.
@@ -48,12 +46,13 @@ const char* exception_to_string(ExceptionType type);
  * Getter for the global ExceptionContext, ensuring it has been initialized.
  * @return globally accessible ExceptionContext
  */
-ExceptionContext* exception_get_context();
+ExceptionContext* exception_context();
 
-/**
- * Removes the last Exception thrown from the exception stack.
- */
-void exception_clear_last();
+void exception_new_context();
+
+void exception_release_context();
+
+void exception_handle_uncaught();
 
 /**
  * Macro handling the throwing of an Exception with a formatted message.
@@ -62,30 +61,37 @@ void exception_clear_last();
  */
 #define throw(exception_type, fmt, ...) \
     do { \
-        ExceptionContext* ectx = exception_get_context(); \
+        ExceptionContext* ectx = exception_context(); \
+        ectx->thrown_exception = true; \
         int len = snprintf(NULL, 0, fmt __VA_OPT__(,) __VA_ARGS__); \
         char* buffer = malloc(len + 1); \
         if (!buffer) { \
-            Exception e = (Exception){OutOfMemoryException, \
+            ectx->exception = (Exception){OutOfMemoryException, \
                 NULL, __FILE__, __LINE__}; \
-            deque_add_last(ectx->stack, &e); \
             longjmp(ectx->env, 1); \
         } \
         snprintf(buffer, len + 1, fmt __VA_OPT__(,) __VA_ARGS__); \
-        Exception e = (Exception){exception_type, buffer, __FILE__, __LINE__}; \
-        deque_add_last(ectx->stack, &e); \
+        ectx->exception = (Exception){exception_type, buffer, __FILE__, __LINE__}; \
         longjmp(ectx->env, 1); \
     } while(0)
 
+
 /// Macro setting up a try-catch block by saving the current context.
-#define try if (setjmp(exception_get_context()->env) == 0)
+#define try \
+    exception_new_context(); \
+    if (setjmp(exception_context()->env) == 0)
 
 /**
  * Macro completing a try-catch block by catching specific thrown Exceptions.
  * @param exception_types type(s) of the expected Exception to catch
  */
-#define catch(exception_types) else if (exception_get_context()->stack->count > 0 && \
-    (exception_types) & (*(Exception*)deque_get_last(exception_get_context()->stack)).type)
+#define catch(exception_types) else if (exception_context()->thrown_exception && \
+    ((exception_types) & exception_context()->exception.type))
 
 /// Macro completing a try-catch block by catching any thrown Exception.
-#define catch_any else
+#define catch_any else if (true)
+
+/// Macro required to be called after a try-catch block to clear context and catch uncaught Exceptions.
+#define finalize \
+    else exception_handle_uncaught(); \
+    exception_release_context()

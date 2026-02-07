@@ -37,20 +37,19 @@
 #define assert_throws(code, ex_type) \
     do { \
         try code \
-        catch(ex_type) { exception_clear_last(); break; } \
-        catch_any { TEST_FAILED(__FILE__, __LINE__, \
+        catch(ex_type) { exception_release_context(); break; } \
+        catch_any { exception_release_context(); TEST_FAILED(__FILE__, __LINE__, \
             "Expected '%s' to be thrown, instead got '%s'", #ex_type, \
-            exception_to_string((*(Exception**)deque_get_last(exception_get_context()->stack))->type)) \
-            exception_clear_last(); \
-        } \
+            exception_to_string(exception_context()->exception.type)); \
+        } finalize;\
         TEST_FAILED(__FILE__, __LINE__, "Expected '%s' to be thrown", #ex_type) \
     } while (0) \
 
-#define assert_runs(code) \
-    do { \
-        try code \
-        catch_any { \
-            TEST_FAILED(__FILE__, __LINE__, "Expected no exception, instead got '%s'", \
-                exception_to_string((*(Exception**)deque_get_last(exception_get_context()->stack))->type))\
-        } \
-    } while (0);
+// #define assert_runs(code) \
+//     do { \
+//         try code \
+//         catch_any { \
+//             TEST_FAILED(__FILE__, __LINE__, "Expected no exception, instead got '%s'", \
+//                 exception_to_string((*(Exception**)deque_get_last(exception_get_context()->stack))->type))\
+//         } \
+//     } while (0);
