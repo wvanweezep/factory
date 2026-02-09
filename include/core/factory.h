@@ -13,7 +13,7 @@ typedef enum FactoryCompType {
 // Single component of a factory.
 typedef struct FactoryComp {
     FactoryCompType type;               // Type of FactoryComp for state interpretation
-    Deque* tiles;                   // List of global tiles the FactoryComp occupies
+    Deque* tiles;                       // List of global tiles the FactoryComp occupies
     void* state;                        // Generic pointer to the component's state
 } FactoryComp;
 
@@ -21,7 +21,7 @@ typedef struct FactoryComp {
 typedef struct FactoryContext {
     HashMap* chunk_map;                 // Hashmap with occupied chunks
     HashMap* tile_comp_map;             // Hashmap mapping global tile indices to a FactoryComp index
-    Deque* comp_list;               // List of all FactoryComp in the factory
+    Deque* comp_list;                   // List of all FactoryComp in the factory
 } FactoryContext;
 
 /**

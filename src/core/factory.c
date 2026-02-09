@@ -7,8 +7,7 @@ FactoryContext* factory_new_context() {
     if (!context) throw(OutOfMemoryException, "Unable to allocate memory");
     context->chunk_map = hashmap_create(8, std_hash_func);
     context->tile_comp_map = hashmap_create(8, std_hash_func);
-    // TODO: Change to ArrayList implementation
-    //context->comp_list = deque_create(sizeof(FactoryComp*), 8);
+    context->comp_list = deque_create(sizeof(FactoryComp*), 8);
     if (!context->chunk_map || !context->tile_comp_map || !context->comp_list)
         throw(OutOfMemoryException, "Unable to allocate memory");
     return context;
