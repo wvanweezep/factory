@@ -2,11 +2,9 @@
 
 #include "logging/exception.h"
 #include "collections/hashmap.h"
-#include "collections/deque.h"
 #include "math/vec2.h"
 #include "camera.h"
-
-// TODO: Change chunk_map to hashmap-list combination for serialization support
+#include "collections/deque.h"
 
 typedef enum FactoryCompType {
     FACTORY_COMP_CONVEYER = 1
@@ -15,7 +13,7 @@ typedef enum FactoryCompType {
 // Single component of a factory.
 typedef struct FactoryComp {
     FactoryCompType type;               // Type of FactoryComp for state interpretation
-    Deque* tiles;                       // List of global tiles the FactoryComp occupies
+    Deque* tiles;                   // List of global tiles the FactoryComp occupies
     void* state;                        // Generic pointer to the component's state
 } FactoryComp;
 
@@ -23,7 +21,7 @@ typedef struct FactoryComp {
 typedef struct FactoryContext {
     HashMap* chunk_map;                 // Hashmap with occupied chunks
     HashMap* tile_comp_map;             // Hashmap mapping global tile indices to a FactoryComp index
-    Deque* comp_list;                   // List of all FactoryComp in the factory
+    Deque* comp_list;               // List of all FactoryComp in the factory
 } FactoryContext;
 
 /**
@@ -43,25 +41,13 @@ FactoryContext* factory_new_context();
 size_t factory_at(const FactoryContext* context, vec2i tile_index);
 
 /**
- * Add a FactoryComp at a provided global tile index to the factory.
+ * Add a FactoryComp to the factory.
  * @param context factory to add the FactoryComp to
  * @param comp FactoryComp to add to the factory
- * @param tile_index global tile index for the new FactoryComp
- * @return index of the registered FactoryComp, or SIZE_MAX if the tile index is already occupied
+ * @return index of the registered FactoryComp, or SIZE_MAX if any tile index is already occupied
  * @throws IllegalArgumentException thrown when either the provided context or comp is NULL
  */
-size_t factory_add(FactoryContext* context, FactoryComp* comp, vec2i tile_index);
-
-/**
- * Register another global tile index occupied by a known FactoryComp.
- * @param context factory to use for the aliasing
- * @param index index of the FactoryComp to alias
- * @param tile_index global tile index to use as alias
- * @return true if the tile index is unoccupied and the aliasing was completed.
- * @throws IllegalArgumentException thrown when the provided context is NULL
- * @throws OutOfRangeException thrown when index exceeds the factory size
- */
-bool factory_alias(FactoryContext* context, size_t index, vec2i tile_index);
+size_t factory_add(FactoryContext* context, FactoryComp* comp);
 
 /**
  * Removes a FactoryComp from the factory at a provided global tile index.

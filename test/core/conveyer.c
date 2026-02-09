@@ -30,7 +30,6 @@ UNITT(conv) {
         if (i % 4 == 0) conveyer_pop_resource(c, NULL);
         if (i % 7 == 1) conveyer_push_resource(c, RESOURCE_FILLED);
         conveyer_draw(c);
-        printf("%i\n", *conveyer_peek_resource(c));
     }
 }
 
