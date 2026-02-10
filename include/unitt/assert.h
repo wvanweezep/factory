@@ -38,3 +38,4 @@
         } finalize;\
         throw(AssertionException, "Expected '%s' to be thrown", #ex_type); \
     } while (0) \
+

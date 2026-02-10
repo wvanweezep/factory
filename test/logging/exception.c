@@ -56,11 +56,4 @@ UNITT(try_catch_nested) {
     assert_true(caught);
 }
 
-// UNITT(throw_format) {
-//     try throw(RuntimeException, "%s %d", "test", 1);
-//     const Exception* e = (Exception*)deque_get_first(exception_context()->stack);
-//     assert_not_null(e);
-//     assert_str_equals(e->message, "test 1");
-// }
-
 UNITT_RUN(exception)

@@ -31,11 +31,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="546e8fa1-b069-4e74-b930-0c0561ca0fe4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/test/unitt/assert.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/unitt/assert.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/unitt/assert.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/unitt/unitt.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/unitt/unitt.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/collections/deque.c" beforeDir="false" afterPath="$PROJECT_DIR$/test/collections/deque.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/core/conveyer.c" beforeDir="false" afterPath="$PROJECT_DIR$/test/core/conveyer.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/logging/exception.c" beforeDir="false" afterPath="$PROJECT_DIR$/test/logging/exception.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +147,7 @@
       <workItem from="1769860976806" duration="622000" />
       <workItem from="1769861617412" duration="55573000" />
       <workItem from="1770472343678" duration="2822000" />
-      <workItem from="1770668561019" duration="10930000" />
+      <workItem from="1770668561019" duration="13933000" />
     </task>
     <servers />
   </component>
