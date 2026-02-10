@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "logging/exception.h"
+#include "unitt/time.h"
 
 struct Context;
 
@@ -75,12 +76,17 @@ struct Context {};
             UNITT_BEFORE_EACH_CALL(ctx) \
             printf("\n\033[3m  %s\033[0m", tests[i].name); \
             for (int j = 0; j < 40 - strlen(tests[i].name); j++) putchar(' '); \
+            char* time_str = calloc(16, 1); \
+            uint64_t start_time = time_ns(); \
+            uint64_t end_time; \
             try { \
                 tests[i].test(tests[i].name, ctx); \
-                printf("\033[92m[PASSED]\033[0m"); \
+                end_time = time_ns(); \
+                printf("\033[92m[PASSED]\t%s\033[0m", time_format(time_str, 16, end_time - start_time)); \
                 passed++; \
             } catch_any { \
-                printf("\033[31m[FAILED]"); \
+                end_time = time_ns(); \
+                printf("\033[31m[FAILED]\t%s", time_format(time_str, 16, end_time - start_time)); \
                 Exception e = exception_context()->exception; \
                 printf("\n  -> %s: %s\n\tat %s:%llu\033[0m", exception_to_string(e.type), \
                     e.message, e.file, e.line); \

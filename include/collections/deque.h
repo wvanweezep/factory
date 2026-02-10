@@ -9,7 +9,14 @@ typedef void (*DequeDestructor)(void* value);
 // TODO: Add implementation in docs
 
 // Collection for storing data of a generic type in a deque.
-typedef struct Deque Deque;
+typedef struct Deque {
+    uint8_t* entries;           // Array containing the queue entries
+    size_t head;                // Index for the front of the queue
+    size_t tail;                // Index for the back of the queue
+    size_t element_size;        // Size of each element in bytes
+    size_t capacity;            // Number of elements that can be stored (multiple of element_size)
+    size_t count;               // Current number of entries in the queue
+} Deque;
 
 /**
  * Creates a new empty Deque of an initial size for a provided element size.
@@ -17,6 +24,7 @@ typedef struct Deque Deque;
  * @param initial_size initial size (in elements) the deque can hold
  * @return pointer to newly created Deque
  * @throws OutOfMemoryException thrown when the memory allocation failed
+ * @throws IllegalArgumentException thrown when the provided element size is zero
  */
 Deque* deque_create(size_t element_size, size_t initial_size);
 

@@ -11,6 +11,6 @@ file(GLOB_RECURSE MAIN_SOURCES src/*.c)
 add_executable(Factory main.c ${MAIN_SOURCES})
 
 file(GLOB_RECURSE TEST_SOURCES test/*.c)
-add_executable(UnitTest ${TEST_SOURCES} ${MAIN_SOURCES} test/unitt/assert.c)
+add_executable(UnitTest ${TEST_SOURCES} ${MAIN_SOURCES})
 
 target_link_libraries(Factory raylib)

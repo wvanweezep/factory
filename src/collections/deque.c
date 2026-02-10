@@ -3,16 +3,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct Deque {
-    uint8_t* entries;           // Array containing the queue entries
-    size_t head;                // Index for the front of the queue
-    size_t tail;                // Index for the back of the queue
-    size_t element_size;        // Size of each element in bytes
-    size_t capacity;            // Number of elements that can be stored (multiple of element_size)
-    size_t count;               // Current number of entries in the queue
-} Deque;
-
 Deque* deque_create(size_t element_size, size_t initial_size) {
+    if (element_size == 0) throw(IllegalArgumentException,
+        "Deque must have an element size greater than zero");
     Deque* dq = malloc(sizeof(Deque));
     if (!dq) throw(OutOfMemoryException, "Unable to allocate memory");
     dq->entries = calloc(initial_size, element_size);
@@ -49,10 +42,10 @@ const void* deque_get(const Deque* dq, size_t index) {
     if (!dq || dq->count == 0) throw(IllegalArgumentException,
         "Unable to retrieve entry %s", dq ? "from an empty Deque" :
         "with null pointer as Deque");
-    if (index > dq->count) throw(OutOfRangeException,
+    if (index >= dq->count) throw(OutOfRangeException,
         "Provided index (%llu) is outside the range of the deque (%llu)", index, dq->count);
     return &dq->entries[(dq->head + index * dq->element_size)
-        % (dq->element_size * dq->element_size)];
+        % (dq->capacity * dq->element_size)];
 }
 
 static void resize(Deque* dq) {
@@ -73,6 +66,7 @@ void deque_add_first(Deque* dq, const void* value) {
         "Unable to add entry to Deque with null pointer to entry");
     if (dq->count == dq->capacity) resize(dq);
     dq->head = (dq->head - dq->element_size) % (dq->capacity * dq->element_size);
+    if (dq->count == 0) dq->tail = dq->head;
     memcpy(&dq->entries[dq->head], value, dq->element_size);
     dq->count++;
 }
