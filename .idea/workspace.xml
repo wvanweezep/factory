@@ -31,15 +31,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="546e8fa1-b069-4e74-b930-0c0561ca0fe4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Factory.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Factory.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/collections/deque.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/collections/deque.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/core/factory.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/core/factory.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/logging/exception.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/logging/exception.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/collections/deque.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/collections/deque.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/factory.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/factory.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/deque.c" beforeDir="false" afterPath="$PROJECT_DIR$/test/collections/deque.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/unitt/assert.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/unitt/assert.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/unitt/unitt.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/unitt/unitt.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/collections/deque.c" beforeDir="false" afterPath="$PROJECT_DIR$/test/collections/deque.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/core/conveyer.c" beforeDir="false" afterPath="$PROJECT_DIR$/test/core/conveyer.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,37 +68,7 @@
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/wvanw/CLionProjects/factory/include/logging/exception.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/include/unitt/unitt.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/main.c" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -149,14 +115,14 @@
       <recent name="C:\Users\wvanw\CLionProjects\factory\assets" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.Factory">
-    <configuration name="Factory" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Factory" TARGET_NAME="Factory" CONFIG_NAME="Debug-MinGW" RUN_TARGET_PROJECT_NAME="Factory" RUN_TARGET_NAME="Factory">
+  <component name="RunManager" selected="CMake Application.UnitTest">
+    <configuration name="Factory" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="true" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Factory" TARGET_NAME="Factory" CONFIG_NAME="Debug-MinGW" RUN_TARGET_PROJECT_NAME="Factory" RUN_TARGET_NAME="Factory">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-        <option name="RunConfigurationTask" enabled="true" run_configuration_name="UnitTest" run_configuration_type="CMakeRunConfiguration" />
+        <option name="RunConfigurationTask" enabled="false" run_configuration_name="UnitTest" run_configuration_type="CMakeRunConfiguration" />
       </method>
     </configuration>
-    <configuration name="UnitTest" type="CMakeRunConfiguration" factoryName="Application" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Factory" TARGET_NAME="UnitTest" CONFIG_NAME="Debug-MinGW" RUN_TARGET_PROJECT_NAME="Factory" RUN_TARGET_NAME="UnitTest">
+    <configuration name="UnitTest" type="CMakeRunConfiguration" factoryName="Application" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="true" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Factory" TARGET_NAME="UnitTest" CONFIG_NAME="Debug-MinGW" RUN_TARGET_PROJECT_NAME="Factory" RUN_TARGET_NAME="UnitTest">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -181,7 +147,7 @@
       <workItem from="1769860976806" duration="622000" />
       <workItem from="1769861617412" duration="55573000" />
       <workItem from="1770472343678" duration="2822000" />
-      <workItem from="1770668561019" duration="6993000" />
+      <workItem from="1770668561019" duration="10930000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,9 @@
 #pragma once
 
+#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include "logging/exception.h"
 
 struct Context;
 
@@ -63,17 +66,36 @@ struct Context {};
 
 #define UNITT_RUN(suite_name) \
     __attribute__((constructor(102))) static void unitt_suite_##suite_name() { \
-        struct Context* ctx = calloc(1, sizeof(struct Context));\
+        printf("\n\n\033[1mExecuting Test Suite: %s\033[0m", #suite_name); \
+        size_t passed = 0; \
+        size_t failed = 0; \
+        struct Context* ctx = calloc(1, sizeof(struct Context)); \
         UNITT_BEFORE_ALL_CALL(ctx) \
-        for (int i = num_tests - 1; i >= 0; i--) {\
+        for (int i = num_tests - 1; i >= 0; i--) { \
             UNITT_BEFORE_EACH_CALL(ctx) \
-            tests[i].test(tests[i].name, ctx); \
+            printf("\n\033[3m  %s\033[0m", tests[i].name); \
+            for (int j = 0; j < 40 - strlen(tests[i].name); j++) putchar(' '); \
+            try { \
+                tests[i].test(tests[i].name, ctx); \
+                printf("\033[92m[PASSED]\033[0m"); \
+                passed++; \
+            } catch_any { \
+                printf("\033[31m[FAILED]"); \
+                Exception e = exception_context()->exception; \
+                printf("\n  -> %s: %s\n\tat %s:%llu\033[0m", exception_to_string(e.type), \
+                    e.message, e.file, e.line); \
+                failed++; \
+            } finalize; \
             UNITT_AFTER_EACH_CALL(ctx) \
         } \
         UNITT_AFTER_ALL_CALL(ctx) \
+        printf("\nSummary: %llu passed, %llu failed\n", passed, failed); \
         free(ctx); \
     }
 
 #ifdef UNITT_MAIN_ENTRY
-int main(void) { return 0; }
+int main(void) {
+    getchar();
+    return 0;
+}
 #endif

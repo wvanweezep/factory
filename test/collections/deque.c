@@ -21,12 +21,6 @@ UNITT_AFTER_EACH {
     deque_free(ctx->dq, NULL);
 }
 
-UNITT(throwing) {
-    assert_throws({
-        throw(OutOfRangeException, "hh");
-    }, OutOfRangeException);
-}
-
 UNITT(peek_single) {
     Deque* dq = ctx->dq;
     const int value = 42;
